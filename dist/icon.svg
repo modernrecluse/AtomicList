@@ -1,0 +1,37 @@
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background circle -->
+  <circle cx="256" cy="256" r="240" fill="#5A7A5A"/>
+  
+  <!-- Hierarchical list representation -->
+  <!-- Level 0 item -->
+  <rect x="80" y="160" width="20" height="20" rx="4" fill="#E8F5E8"/>
+  <rect x="120" y="160" width="280" height="20" rx="10" fill="#E8F5E8"/>
+  
+  <!-- Level 1 item -->
+  <rect x="120" y="200" width="16" height="16" rx="3" fill="#C5D6C5"/>
+  <rect x="150" y="200" width="220" height="16" rx="8" fill="#C5D6C5"/>
+  
+  <!-- Level 1 item -->
+  <rect x="120" y="230" width="16" height="16" rx="3" fill="#C5D6C5"/>
+  <rect x="150" y="230" width="180" height="16" rx="8" fill="#C5D6C5"/>
+  
+  <!-- Level 2 item -->
+  <rect x="150" y="260" width="12" height="12" rx="2" fill="#A8BBA8"/>
+  <rect x="175" y="260" width="140" height="12" rx="6" fill="#A8BBA8"/>
+  
+  <!-- Level 0 item -->
+  <rect x="80" y="300" width="20" height="20" rx="4" fill="#E8F5E8"/>
+  <rect x="120" y="300" width="240" height="20" rx="10" fill="#E8F5E8"/>
+  
+  <!-- Level 1 item -->
+  <rect x="120" y="340" width="16" height="16" rx="3" fill="#C5D6C5"/>
+  <rect x="150" y="340" width="160" height="16" rx="8" fill="#C5D6C5"/>
+  
+  <!-- Atomic symbol overlay -->
+  <circle cx="400" cy="150" r="40" fill="#2D4A2D" opacity="0.8"/>
+  <circle cx="400" cy="150" r="6" fill="#E8F5E8"/>
+  <circle cx="385" cy="135" r="3" fill="#E8F5E8"/>
+  <circle cx="415" cy="135" r="3" fill="#E8F5E8"/>
+  <circle cx="385" cy="165" r="3" fill="#E8F5E8"/>
+  <circle cx="415" cy="165" r="3" fill="#E8F5E8"/>
+</svg>
