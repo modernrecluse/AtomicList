@@ -3,30 +3,114 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Atomic List - Hierarchical Note Taking</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no" />
+    <title>Atomic List - Mobile Note Taking</title>
     
     <!-- PWA Meta Tags -->
-    <meta name="description" content="A beautiful hierarchical note-taking app with task management and multiple themes">
-    <meta name="theme-color" content="#5A7A5A">
+    <meta name="description" content="A beautiful hierarchical note-taking PWA optimized for mobile with touch gestures and offline support">
+    <meta name="theme-color" content="#5A7A5A" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#0F0F23" media="(prefers-color-scheme: dark)">
     <meta name="background-color" content="#E8F5E8">
     
     <!-- Apple PWA Meta Tags -->
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <meta name="apple-mobile-web-app-title" content="Atomic List">
+    <meta name="apple-touch-fullscreen" content="yes">
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="apple-touch-startup-image" href="/apple-startup-640x1136.png" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)">
+    <link rel="apple-touch-startup-image" href="/apple-startup-750x1334.png" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)">
+    <link rel="apple-touch-startup-image" href="/apple-startup-828x1792.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2)">
     
     <!-- Microsoft PWA Meta Tags -->
     <meta name="msapplication-TileColor" content="#5A7A5A">
     <meta name="msapplication-config" content="/browserconfig.xml">
+    <meta name="msapplication-tap-highlight" content="no">
     
-    <!-- Additional Meta Tags -->
+    <!-- Mobile Optimization -->
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="application-name" content="Atomic List">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="HandheldFriendly" content="true">
+    <meta name="MobileOptimized" content="320">
+    
+    <!-- Performance & SEO -->
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Atomic List">
+    <meta name="keywords" content="notes, hierarchical, mobile, pwa, productivity, tasks, atomic thinking">
+    
+    <!-- Preload critical resources -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+    
+    <!-- Security -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+    
+    <!-- Disable zoom on input focus for better UX -->
+    <style>
+      @media screen and (max-width: 768px) {
+        input, textarea, select {
+          font-size: 16px !important;
+        }
+      }
+      
+      /* Prevent text selection on touch devices for better UX */
+      .no-select {
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+      
+      /* Better touch scrolling */
+      * {
+        -webkit-overflow-scrolling: touch;
+        -webkit-tap-highlight-color: transparent;
+      }
+      
+      /* Safe area padding for notched devices */
+      .safe-area-top {
+        padding-top: env(safe-area-inset-top);
+      }
+      
+      .safe-area-bottom {
+        padding-bottom: env(safe-area-inset-bottom);
+      }
+      
+      /* Smooth animations */
+      * {
+        box-sizing: border-box;
+      }
+      
+      body {
+        margin: 0;
+        padding: 0;
+        overscroll-behavior: none;
+        touch-action: manipulation;
+      }
+    </style>
   </head>
-  <body>
+  <body class="safe-area-top safe-area-bottom">
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+    
+    <!-- Register service worker -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js')
+            .then((registration) => {
+              console.log('SW registered: ', registration);
+            })
+            .catch((registrationError) => {
+              console.log('SW registration failed: ', registrationError);
+            });
+        });
+      }
+    </script>
   </body>
 </html>

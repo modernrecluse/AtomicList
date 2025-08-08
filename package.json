@@ -1,12 +1,15 @@
 {
-  "name": "atomic-list-app",
+  "name": "atomic-list-mobile",
   "private": true,
-  "version": "0.0.0",
+  "version": "2.0.0",
   "type": "module",
+  "description": "A beautiful hierarchical note-taking PWA optimized for mobile with touch gestures and offline support",
+  "keywords": ["pwa", "mobile", "notes", "hierarchical", "productivity", "tasks", "atomic thinking"],
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0"
   },
   "dependencies": {
     "lucide-react": "^0.294.0",
