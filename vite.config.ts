@@ -8,17 +8,24 @@ export default defineConfig({
     react(),
     VitePWA({
       registerType: 'autoUpdate',
-      includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'masked-icon.svg'],
+      includeAssets: ['favicon.ico', 'apple-touch-icon.png'],
+      workbox: {
+        globPatterns: ['**/*.{js,css,html,ico,png,svg}']
+      },
+      devOptions: {
+        enabled: true
+      },
       manifest: {
-        name: 'Atomic List - Hierarchical Note Taking',
+        name: 'Atomic List - Mobile Note Taking',
         short_name: 'Atomic List',
-        description: 'A beautiful hierarchical note-taking app with task management and multiple themes',
+        description: 'A beautiful hierarchical note-taking PWA optimized for mobile with touch gestures and offline support',
         theme_color: '#5A7A5A',
         background_color: '#E8F5E8',
         display: 'standalone',
-        orientation: 'portrait',
+        orientation: 'portrait-primary',
         scope: '/',
         start_url: '/',
+        categories: ['productivity', 'utilities'],
         icons: [
           {
             src: 'pwa-192x192.png',
@@ -34,12 +41,15 @@ export default defineConfig({
             src: 'pwa-512x512.png',
             sizes: '512x512',
             type: 'image/png',
-            purpose: 'any maskable'
+            purpose: 'any'
+          },
+          {
+            src: 'pwa-512x512.png',
+            sizes: '512x512',
+            type: 'image/png',
+            purpose: 'maskable'
           }
         ]
-      },
-      workbox: {
-        globPatterns: ['**/*.{js,css,html,ico,png,svg}']
       }
     })
   ],
@@ -50,5 +60,16 @@ export default defineConfig({
   preview: {
     host: '0.0.0.0',
     port: 4173
+  },
+  build: {
+    target: 'es2015',
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vendor: ['react', 'react-dom'],
+          icons: ['lucide-react']
+        }
+      }
+    }
   }
 })
